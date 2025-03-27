@@ -4,14 +4,20 @@
   /* colors */
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-yellow: oklch(85.96% 0.177 104.97);
+
   /* semantic color variables for this project */
-  --color-background: var(--color-white);
+  --color-background: var(--color-black);
+  --color-text: var(--color-white);
+  --color-accent: var(--color-yellow);
 
   /* fonts */
   --font-sans: 'Droid Sans', 'sans-serif';
 }
 
 body {
+  background: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-sans);
 }
 
