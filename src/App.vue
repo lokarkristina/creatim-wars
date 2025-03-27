@@ -4,11 +4,11 @@ import AppHeader from '@/components/AppHeader.vue'
 </script>
 
 <template>
+  <!-- Page header. -->
   <AppHeader />
 
-  <main role="main">
-    <RouterView />
-  </main>
+  <!-- Main page content. -->
+  <RouterView />
 </template>
 
 <style>
