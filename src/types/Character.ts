@@ -1,0 +1,40 @@
+/**
+ * Represents a character from the Star Wars universe.
+ * Includes details such as:
+ * @param {string} name - The name of the character.
+ * @param {string} height - The height of the character.
+ * @param {string} mass - The mass of the character.
+ * @param {string} hair_color - The hair color of the character.
+ * @param {string} skin_color - The skin color of the character.
+ * @param {string} eye_color - The eye color of the character.
+ * @param {string} birth_year - The birth year of the character.
+ * @param {string} gender - The gender of the character.
+ * @param {string} image - The image of the character.
+ * @param {string} homeworld - The URL of the character's homeworld.
+ * @param {string[]} films - An array of URLs of the films the character appeared in.
+ * @param {string[]} species - An array of URLs of the character's species.
+ * @param {string[]} vehicles - An array of URLs of the vehicles the character used.
+ * @param {string[]} starships - An array of URLs of the starships the character used.
+ * @param {string} created - The date and time when the character was created.
+ * @param {string} edited - The date and time when the character was last edited.
+ * @param {string} url - The URL of the character.
+ */
+export interface Character {
+  name: string
+  height: string
+  mass: string
+  hair_color: string
+  skin_color: string
+  eye_color: string
+  birth_year: string
+  gender: string
+  image?: string
+  homeworld?: string
+  films?: string[]
+  species?: string[]
+  vehicles?: string[]
+  starships?: string[]
+  created: string
+  edited: string
+  url?: string
+}
