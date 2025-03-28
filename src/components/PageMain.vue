@@ -1,32 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import type { Character } from '@/types/Character'
+import { watchEffect } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useCharacterStore } from '@/stores/characters'
 
-const characters = ref<Character[]>([
-  {
-    name: 'Test character',
-    height: '22',
-    mass: 'mass',
-    hair_color: 'hair color',
-    skin_color: 'skin color',
-    eye_color: 'eye color',
-    birth_year: '1995',
-    gender: 'M',
-    image: 'https://akabab.github.io/starwars-api/api/id/1.json',
-    created: '23.43.2024',
-    edited: '12.45.2024',
-  },
-])
+const store = useCharacterStore()
+// Use storeToRefs for ALL reactive store properties.
+const { loading, error, characters } = storeToRefs(store)
+// Only methods are destructured directly from store.
+const { fetchCharacters, editCharacter } = store
 
-const characterEdit = () => console.log('🪄 e d i t i n g 🪄')
+watchEffect(async () => {
+  try {
+    if (!characters.value?.length) {
+      await fetchCharacters()
+    }
+  } catch (e) {
+    console.error('Failed to fetch characters:', e)
+  }
+})
 </script>
 
 <template>
-  <div class="main">
-    <template v-for="char in characters" :key="char.name">
-      <article class="character">
-        <picture>
-          <img :src="char.image" />
+  <main role="main">
+    {{ loading }}
+    <div v-if="loading">Loading...</div>
+    <div v-else-if="error">Error: {{ error.message }}</div>
+    <template v-else>
+      <article class="character" v-for="char in characters" :key="char.id">
+        <picture v-if="char.image">
+          <img :src="char.image" :alt="char.name" loading="lazy" />
         </picture>
 
         <ul class="character-characteristics">
@@ -40,16 +42,16 @@ const characterEdit = () => console.log('🪄 e d i t i n g 🪄')
             Mass: <strong>{{ char.mass }}</strong>
           </li>
           <li>
-            Hair color: <strong>{{ char.hair_color }}</strong>
+            Hair color: <strong>{{ char.hairColor }}</strong>
           </li>
           <li>
-            Skin color: <strong>{{ char.skin_color }}</strong>
+            Skin color: <strong>{{ char.skinColor }}</strong>
           </li>
           <li>
-            Eye color: <strong>{{ char.eye_color }}</strong>
+            Eye color: <strong>{{ char.eyeColor }}</strong>
           </li>
           <li>
-            Birth year: <strong>{{ char.birth_year }}</strong>
+            Birth year: <strong>{{ char.born }}</strong>
           </li>
           <li>
             Gender: <strong>{{ char.gender }}</strong>
@@ -57,10 +59,14 @@ const characterEdit = () => console.log('🪄 e d i t i n g 🪄')
         </ul>
 
         <!-- Edit the character characteristics. -->
-        <button class="button" @click="characterEdit" title="Edit character">
+        <button
+          class="button"
+          @click="editCharacter(char.id)"
+          title="Edit character"
+        >
           Edit
         </button>
       </article>
     </template>
-  </div>
+  </main>
 </template>
