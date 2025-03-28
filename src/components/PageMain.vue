@@ -57,7 +57,9 @@ const characterEdit = () => console.log('🪄 e d i t i n g 🪄')
         </ul>
 
         <!-- Edit the character characteristics. -->
-        <button class="button" @click="characterEdit" title="Edit character">Edit</button>
+        <button class="button" @click="characterEdit" title="Edit character">
+          Edit
+        </button>
       </article>
     </template>
   </div>
