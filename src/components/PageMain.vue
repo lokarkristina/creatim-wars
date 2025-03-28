@@ -1,23 +1,28 @@
 <script setup lang="ts">
-import { watchEffect, ref } from 'vue'
-import { useFetch } from '@/composables/useFetch'
-import type { Character } from '@/types/Character'
+import { watchEffect } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useCharacterStore } from '@/stores/characters'
 
-const characters = ref<Character[]>([])
+const store = useCharacterStore()
+// Use storeToRefs for ALL reactive store properties.
+const { loading, error, characters } = storeToRefs(store)
+// Only methods are destructured directly from store.
+const { fetchCharacters, editCharacter } = store
 
-const characterEdit = () => console.log('🪄 e d i t i n g 🪄')
-
-const { data: charactersData, loading, error } = useFetch<Character[]>()
-// Watch for changes in charactersData.
-watchEffect(() => {
-  if (charactersData.value) {
-    characters.value = charactersData.value
+watchEffect(async () => {
+  try {
+    if (!characters.value?.length) {
+      await fetchCharacters()
+    }
+  } catch (e) {
+    console.error('Failed to fetch characters:', e)
   }
 })
 </script>
 
 <template>
   <main role="main">
+    {{ loading }}
     <div v-if="loading">Loading...</div>
     <div v-else-if="error">Error: {{ error.message }}</div>
     <template v-else>
@@ -54,7 +59,11 @@ watchEffect(() => {
         </ul>
 
         <!-- Edit the character characteristics. -->
-        <button class="button" @click="characterEdit" title="Edit character">
+        <button
+          class="button"
+          @click="editCharacter(char.id)"
+          title="Edit character"
+        >
           Edit
         </button>
       </article>
