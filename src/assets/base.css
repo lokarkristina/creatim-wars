@@ -1,18 +1,27 @@
 @import 'tailwindcss';
 @import './fonts.css';
-:root {
+
+@theme {
+  /* reset */
+  --color-*: initial;
+
   /* colors */
   --color-black: #000000;
   --color-white: #ffffff;
   --color-yellow: oklch(85.96% 0.177 104.97);
 
+  /* fonts */
+  --font-sans: 'Droid Sans', 'sans-serif';
+
+  /* sizes */
+  --header-size: 760px;
+  --content-size: 900px;
+}
+@theme inline {
   /* semantic color variables for this project */
   --color-background: var(--color-black);
   --color-text: var(--color-white);
   --color-accent: var(--color-yellow);
-
-  /* fonts */
-  --font-sans: 'Droid Sans', 'sans-serif';
 }
 
 body {
@@ -23,5 +32,6 @@ body {
 
 img {
   width: 100%;
+  max-width: 100%;
   object-fit: cover;
 }
