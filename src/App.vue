@@ -5,9 +5,15 @@ import { RouterView } from 'vue-router'
 <template>
   <header>Header.</header>
 
-  <main>
+  <main role="main">
     <RouterView />
   </main>
-
-  <footer>Footer.</footer>
 </template>
+
+<style>
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100dvh;
+}
+</style>

@@ -1,7 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PageMain from '@/components/PageMain.vue'
+</script>
 
 <template>
-  <div>
-    <h1>Home</h1>
-  </div>
+  <PageMain />
 </template>
