@@ -1,7 +1,7 @@
 /**
  * Represents a character from the Star Wars universe.
  * Includes details such as:
- * @param {string} id - The id of the character.
+ * @param {number} id - The id of the character.
  * @param {string} name - The name of the character.
  * @param {string} height - The height of the character.
  * @param {string} mass - The mass of the character.
@@ -21,7 +21,7 @@
  * @param {string} url - The URL of the character.
  */
 export interface Character {
-  id: string
+  id: number
   name: string
   height: string
   mass: string
@@ -36,7 +36,7 @@ export interface Character {
   species?: string[]
   vehicles?: string[]
   starships?: string[]
-  created: string
+  created?: string
   edited: string
   url?: string
 }
