@@ -17,7 +17,7 @@ const { openPanel } = useSidePanel()
   >
     <!-- Main navigation menu with internal links. -->
     <div class="grid lg:grid-flow-col items-center py-4 gap-3.5">
-      <MenuMain class="hidden lg:block"></MenuMain>
+      <MenuMain class="max-lg:hidden"></MenuMain>
 
       <!-- Site logo with link to homepage. -->
       <RouterLink
@@ -45,8 +45,12 @@ const { openPanel } = useSidePanel()
       >
         Open Menu
       </button>
+
+      <!-- Side panel component with navigation menus. -->
       <SidePanel>
+        <!-- The main menu links. -->
         <MenuMain />
+        <!-- The additional page links. -->
         <MenuLinks />
       </SidePanel>
     </div>

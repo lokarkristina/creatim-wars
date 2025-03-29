@@ -29,6 +29,7 @@ export function useFetch<T extends Character[]>() {
       // Parse the JSON response.
       const json = await response.json()
       // Transform the raw data to match our application's data structure.
+      // @todo was it meant that only 3 items are shown at most?
       const transformed = json.map((char: Character) => ({
         // Cast ID to number for consistent comparison operations.
         id: Number(char.id),
