@@ -2,12 +2,12 @@
 import { RouterView } from 'vue-router'
 // components
 import AppHeader from '@/components/AppHeader.vue'
-import StarySky from '@/components/StarySky.vue'
+import StarrySky from '@/components/StarrySky.vue'
 </script>
 
 <template>
   <!-- Some fancy bg, that's not in design, but I felt like it fits. -->
-  <StarySky />
+  <StarrySky />
 
   <!-- Page header. -->
   <AppHeader />

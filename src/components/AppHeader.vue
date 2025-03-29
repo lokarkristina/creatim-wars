@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-// componenets
+// components
 import MenuLinks from '@/components/MenuLinks.vue'
 import MenuMain from '@/components/MenuMain.vue'
 import SidePanel from '@/components/SidePanel.vue'
@@ -26,7 +26,7 @@ const { openPanel } = useSidePanel()
       >
         <img
           src="@/assets/logo.png"
-          class="logo object-contain"
+          class="object-contain logo"
           alt="Star Wars logo"
         />
       </RouterLink>
