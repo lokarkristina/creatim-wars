@@ -30,6 +30,10 @@ body {
   font-family: var(--font-sans);
 }
 
+button {
+  cursor: pointer;
+}
+
 img {
   width: 100%;
   max-width: 100%;
