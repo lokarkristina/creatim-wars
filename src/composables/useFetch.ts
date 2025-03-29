@@ -47,6 +47,7 @@ export function useFetch<T extends Character[]>() {
 
       // Update the store with the transformed data.
       data.value = transformed as T
+
       return data.value
     } catch (e) {
       // Handle and store any errors that occur during the fetch.
