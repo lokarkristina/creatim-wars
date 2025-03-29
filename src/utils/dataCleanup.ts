@@ -5,14 +5,28 @@ import type { Character } from '@/types/Character'
  * @param {Character} char - The character object containing the source data.
  * @returns {Character} A new Character object with selected properties.
  */
-export const getCharacterDetails = (char: Character): Character => ({
+// @todo is this ok? move to own file?
+interface CharacterOutput {
+  id: number
+  name: string
+  height: string
+  mass: string
+  'Hair color': string
+  'Skin color': string
+  'Eye color': string
+  born: string
+  gender: string
+  edited: string
+}
+
+export const getCharacterDetails = (char: Character): CharacterOutput => ({
   id: char.id,
   name: char.name,
   height: char.height,
   mass: char.mass,
-  hairColor: char.hairColor,
-  skinColor: char.skinColor,
-  eyeColor: char.eyeColor,
+  'Hair color': char.hairColor,
+  'Skin color': char.skinColor,
+  'Eye color': char.eyeColor,
   born: char.born,
   gender: char.gender,
   edited: char.edited,

@@ -15,7 +15,7 @@ const { isOpen, closePanel } = useSidePanel()
     class="side-panel fixed inset-y-0 start-0 grid-rows-[auto_1fr_auto] bg-black z-50 py-5 px-6 max-w-[85vw] w-full gap-6 grid content-start"
     :class="[isOpen ? 'side-panel--open' : 'side-panel--closed']"
   >
-    <div class="side-panel__header flex justify-between items-center">
+    <div class="flex items-center justify-between side-panel__header">
       <!-- Site logo with link to homepage. -->
       <RouterLink to="/" class="max-w-28 pb-2.5 border-b border-accent">
         <img src="@/assets/logo.png" class="logo" alt="Star Wars logo" />
@@ -24,11 +24,11 @@ const { isOpen, closePanel } = useSidePanel()
       <button class="icon" @click="closePanel">Icon close.</button>
     </div>
 
-    <div class="side-panel__body mt-6">
+    <div class="mt-6 side-panel__body">
       <slot />
     </div>
 
-    <div class="side-panel__footer border-t border-t-white/20 p-5">footer.</div>
+    <div class="p-5 border-t side-panel__footer border-t-white/20">footer.</div>
   </div>
 </template>
 

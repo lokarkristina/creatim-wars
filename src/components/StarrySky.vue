@@ -49,7 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg fixed inset-0">
+  <div class="fixed inset-0 bg">
     <div ref="z3">
       <div class="tile top-left animate-opacity freq-5"></div>
       <div class="tile top-right animate-opacity freq-9"></div>

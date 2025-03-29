@@ -8,7 +8,7 @@ import { API_URL } from '@/utils/constants'
 import { timeout } from '@/utils/timeout'
 
 export function useFetch<T extends Character[]>() {
-  // Get reactive references from the store
+  // Get reactive references from the store.
   const { characters: data, error, loading } = storeToRefs(useCharacterStore())
 
   const fetchData = async () => {

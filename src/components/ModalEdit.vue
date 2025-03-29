@@ -59,18 +59,18 @@ watchEffect(() => {
 
 <template>
   <div
-    class="modal modal-edit fixed z-50 inset-0"
+    class="fixed inset-0 z-50 modal modal-edit"
     role="dialog"
     aria-labelledby="modal-title"
     aria-modal="true"
   >
     <div
-      class="modal-backdrop fixed inset-0 bg-black/50"
+      class="fixed inset-0 modal-backdrop bg-black/50"
       @click="closeEdit"
       aria-hidden="true"
     ></div>
 
-    <div class="modal-container relative" v-if="character">
+    <div class="relative modal-container" v-if="character">
       <div class="modal-header">
         <h2 id="modal-title">{{ `Edit ${character.name}` }}</h2>
         <button @click="closeEdit" aria-label="Close modal" type="button">
