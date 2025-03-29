@@ -47,7 +47,7 @@ watchEffect(async () => {
 <template>
   <main
     role="main"
-    class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-20 md:py-36"
+    class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
   >
     <!-- Skeleton loading, while data is coming in. -->
     <div v-if="loading" role="status" aria-live="polite">Loading...</div>

@@ -17,4 +17,18 @@ import AppHeader from '@/components/AppHeader.vue'
   grid-template-rows: auto 1fr;
   min-height: 100dvh;
 }
+
+body:has(.side-panel--open) {
+  main {
+    opacity: 0.35;
+  }
+
+  .mobile-menu-icon {
+    opacity: 0;
+  }
+}
+
+.header a {
+  font-weight: bold;
+}
 </style>
