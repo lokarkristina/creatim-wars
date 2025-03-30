@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 // components
-import AppHeader from '@/components/AppHeader.vue'
-import StarrySky from '@/components/StarrySky.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
+import StarrySky from '@/components/elements/StarrySky.vue'
 </script>
 
 <template>

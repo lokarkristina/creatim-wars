@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useCharacterStore } from '@/stores/characters'
 // components
-import ModalEdit from './ModalEdit.vue'
+import ModalEdit from './elements/ModalEdit.vue'
 // utils
 import { getCharacterDetails, capitalizeFirst } from '@/utils/dataCleanup'
 

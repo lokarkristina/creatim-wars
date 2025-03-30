@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 // components
-import MenuLinks from '@/components/MenuLinks.vue'
-import MenuMain from '@/components/MenuMain.vue'
-import SidePanel from '@/components/SidePanel.vue'
+import MenuLinks from '@/components/menus/MenuLinks.vue'
+import MenuMain from '@/components/menus/MenuMain.vue'
+import SidePanel from '@/components/layout/SidePanel.vue'
 // composables
-import { useSidePanel } from '@/composables/useSidePanel'
+import { useSidePanel } from '@/composables/useSidePanel.ts'
 
 const { openPanel } = useSidePanel()
 </script>
