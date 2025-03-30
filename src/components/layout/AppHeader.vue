@@ -13,26 +13,34 @@ const { openPanel } = useSidePanel()
 <template>
   <header
     class="header w-[85vw] md:w-[90vw] max-w-(--content-size) lg:max-w-(--header-size) mx-auto max-lg:flex items-center justify-between"
-    role="header"
+    role="banner"
+    aria-label="Main site header"
   >
     <!-- Main navigation menu with internal links. -->
     <div class="grid lg:grid-flow-col items-center py-4 gap-3.5">
-      <MenuMain class="max-lg:hidden"></MenuMain>
+      <nav aria-label="Main navigation">
+        <MenuMain class="max-lg:hidden"></MenuMain>
+      </nav>
 
       <!-- Site logo with link to homepage. -->
       <RouterLink
         to="/"
         class="max-w-[100px] sm:max-w-[175px] lg:max-w-[210px]"
+        aria-label="Home"
       >
         <img
           src="@/assets/logo.png"
           class="object-contain logo"
           alt="Star Wars logo"
+          width="210"
+          height="auto"
         />
       </RouterLink>
 
       <!-- Secondary navigation menu for external and additional links. -->
-      <MenuLinks class="hidden lg:grid"></MenuLinks>
+      <nav aria-label="Secondary navigation">
+        <MenuLinks class="hidden lg:grid"></MenuLinks>
+      </nav>
     </div>
 
     <!-- Only display on mobile. -->
@@ -40,19 +48,31 @@ const { openPanel } = useSidePanel()
       <!-- Mobile menu side panel with trigger link. -->
       <button
         class="mobile-menu-icon"
-        title="Open the side menu"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="side-panel"
         @click="openPanel"
       >
-        Open Menu
+        <span class="sr-only">Open Menu</span>
       </button>
 
       <!-- Side panel component with navigation menus. -->
       <SidePanel>
-        <!-- The main menu links. -->
-        <MenuMain />
-        <!-- The additional page links. -->
-        <MenuLinks />
+        <nav aria-label="Mobile navigation">
+          <!-- The main menu links. -->
+          <MenuMain />
+          <!-- The additional page links. -->
+          <MenuLinks />
+        </nav>
       </SidePanel>
     </div>
   </header>
 </template>
+
+<style>
+.header a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--color-white);
+}
+</style>

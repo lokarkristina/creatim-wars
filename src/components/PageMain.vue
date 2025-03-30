@@ -51,7 +51,15 @@ watchEffect(async () => {
     class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
   >
     <!-- Skeleton loading, while data is coming in. -->
-    <div v-if="loading" role="status" aria-live="polite">Loading...</div>
+    <div
+      v-if="loading"
+      role="status"
+      aria-busy="true"
+      class="loading-indicator"
+    >
+      <span class="sr-only">Loading characters...</span>
+      Loading...
+    </div>
 
     <!-- Modal containing the character edit form. -->
     <ModalEdit v-if="showEditModal" />
@@ -69,6 +77,7 @@ watchEffect(async () => {
         v-for="char in characters"
         :key="char.id"
         role="listitem"
+        tabindex="0"
       >
         <div
           v-if="char.image"
@@ -79,15 +88,17 @@ watchEffect(async () => {
             :src="char.image"
             :alt="`Portrait of ${char.name}`"
             class="relative size-full"
+            :aria-describedby="`char-details-${char.id}`"
           />
         </div>
 
         <div
           class="character-info overflow-hidden row-[2] relative grid px-6 py-11"
+          :id="`char-details-${char.id}`"
         >
           <ul
             class="character-characteristics group-hover:mb-9 transition-[margin] gap-3 grid grid-cols-2 text-sm md:text-lg leading-none"
-            aria-label="Character details"
+            :aria-label="`Details for ${char.name}`"
           >
             <template
               v-for="(value, key) in getCharacterDetails(char)"
@@ -97,13 +108,12 @@ watchEffect(async () => {
                 v-if="value && !['id', 'edited'].includes(key)"
                 :class="{ 'col-span-2': key === 'name' }"
               >
-                <p :aria-label="capitalizeFirst(key)">
-                  <span
-                    class="block text-[10px] font-light tracking-wider uppercase mb-0.5"
-                  >
-                    {{ capitalizeFirst(key) + ' &mdash;' }}
-                  </span>
+                <p>
+                  <label :for="`char-${char.id}-${key}`" class="mb-0.5">
+                    {{ capitalizeFirst(key) + ' —' }}
+                  </label>
                   <strong
+                    :id="`char-${char.id}-${key}`"
                     class="text-base/1"
                     :class="{ 'text-xl uppercase': key === 'name' }"
                   >
@@ -127,8 +137,14 @@ watchEffect(async () => {
     </div>
 
     <!-- Error. -->
-    <div v-else-if="error" role="alert" aria-live="assertive">
-      Error: {{ error.message }}
+    <div
+      v-else-if="error"
+      role="alert"
+      aria-live="assertive"
+      class="error-message"
+    >
+      <span class="sr-only">Error occurred:</span>
+      {{ error.message }}
     </div>
   </main>
 </template>
@@ -145,7 +161,8 @@ img {
   transition: var(--duration-slow);
 }
 
-article:hover {
+article:hover,
+article:focus {
   transform: scale(1.03);
   box-shadow: 0 0 10px var(--color-accent);
 

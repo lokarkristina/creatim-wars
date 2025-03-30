@@ -14,6 +14,8 @@ const { disabled, ariaLabel, modifier, variant } = defineProps<{
     class="px-6 py-2 text-sm font-bold uppercase rounded-md"
     :disabled="disabled"
     :aria-label="ariaLabel"
+    role="button"
+    tabindex="0"
   >
     <slot />
   </button>
@@ -30,9 +32,7 @@ const { disabled, ariaLabel, modifier, variant } = defineProps<{
   border: 1px solid var(--_bg);
   color: var(--_color);
   background: var(--_bg);
-  box-shadow:
-    0 0 8px var(--_shadow),
-    0 0 11px var(--_shadow);
+
   transition: all var(--duration-fast) var(--easing-default);
   scale: var(--_scale, 0.95);
 
@@ -40,12 +40,23 @@ const { disabled, ariaLabel, modifier, variant } = defineProps<{
     --_bg: transparent;
     --_color: var(--color-accent);
     --_scale: 1.01;
+
+    box-shadow: 0 0 18px var(--_shadow);
   }
 
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;
     cursor: default;
+  }
+}
+
+.button,
+.button--error,
+.button--success {
+  &[disabled] {
+    --_bg: transparent;
+    box-shadow: none;
   }
 }
 
