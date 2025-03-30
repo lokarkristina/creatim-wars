@@ -40,3 +40,30 @@ export interface Character {
   edited: string
   url?: string
 }
+
+/**
+ * Interface representing output data structure for a Star Wars character.
+ * @interface
+ * @property {number} id - Unique identifier for the character
+ * @property {string} name - Name of the character
+ * @property {string} height - Height of the character
+ * @property {string} mass - Mass/weight of the character
+ * @property {string} Hair color - Character's hair color
+ * @property {string} Skin color - Character's skin color
+ * @property {string} Eye color - Character's eye color
+ * @property {string} born - Character's birth date/year
+ * @property {string} gender - Character's gender
+ * @property {string} edited - Timestamp of when the record was last modified
+ */
+export interface CharacterOutput {
+  id: number
+  name: string
+  height: string
+  mass: string
+  'Hair color': string
+  'Skin color': string
+  'Eye color': string
+  born: string
+  gender: string
+  edited: string
+}
