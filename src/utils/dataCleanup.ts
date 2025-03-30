@@ -1,36 +1,45 @@
-import type { Character } from '@/types/Character'
+import type { Character, CharacterOutput } from '@/types/Character'
 
 /**
- * Extracts and returns the essential character details from a Character object.
- * @param {Character} char - The character object containing the source data.
- * @returns {Character} A new Character object with selected properties.
+ * Transforms a Character object into a formatted CharacterOutput object.
+ * Handles unit conversions and text formatting for display purposes.
+ *
+ * @param {Character} character - The source character data
+ * @returns {Partial<CharacterOutput>} Formatted character details
  */
-// @todo is this ok? move to own file?
-interface CharacterOutput {
-  id: number
-  name: string
-  height: string
-  mass: string
-  'Hair color': string
-  'Skin color': string
-  'Eye color': string
-  born: string
-  gender: string
-  edited: string
+export const getCharacterDetails = ({
+  id,
+  name,
+  height,
+  mass,
+  hairColor,
+  skinColor,
+  eyeColor,
+  born,
+  gender,
+  edited,
+}: Character): Partial<CharacterOutput> => {
+  return {
+    ...(id && { id }),
+    ...(name && { name }),
+    ...(edited && { edited }),
+    ...(height && { height: `${height} cm` }),
+    ...(mass && { mass: `${mass} kg` }),
+    ...(hairColor && { 'Hair color': capitalizeFirst(hairColor) }),
+    ...(skinColor && { 'Skin color': capitalizeFirst(skinColor) }),
+    ...(eyeColor && { 'Eye color': capitalizeFirst(eyeColor) }),
+    ...(gender && { gender: capitalizeFirst(gender) }),
+    ...(born && { born: `${born} ${getEraDesignation(born)}` }),
+  }
 }
 
-export const getCharacterDetails = (char: Character): CharacterOutput => ({
-  id: char.id,
-  name: char.name,
-  height: char.height,
-  mass: char.mass,
-  'Hair color': char.hairColor,
-  'Skin color': char.skinColor,
-  'Eye color': char.eyeColor,
-  born: char.born,
-  gender: char.gender,
-  edited: char.edited,
-})
+/**
+ * Helper function to determine the era designation (BBY/ABY).
+ */
+const getEraDesignation = (born: string): string => {
+  const bornNum = Number(born)
+  return !isNaN(bornNum) ? (bornNum > 0 ? 'ABY' : 'BBY') : ''
+}
 
 /**
  * Capitalizes the first letter of a given string.
