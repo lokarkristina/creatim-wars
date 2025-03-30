@@ -47,10 +47,7 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <main
-    role="main"
-    class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
-  >
+  <div>
     <!-- Skeleton loading, while data is coming in. -->
     <div v-if="loading" role="status" aria-busy="true">
       <span class="sr-only">Loading characters...</span>
@@ -142,7 +139,7 @@ watchEffect(async () => {
       <span class="sr-only">Error occurred:</span>
       {{ error.message }}
     </div>
-  </main>
+  </div>
 </template>
 
 <style scoped>

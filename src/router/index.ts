@@ -15,6 +15,11 @@ const router = createRouter({
       // Pass URL query parameter 'id' as a prop.
       props: (route) => ({ id: route.query.id }),
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'error',
+      component: () => import('@/views/ErrorView.vue'),
+    },
   ],
 })
 

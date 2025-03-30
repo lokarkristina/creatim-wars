@@ -13,7 +13,12 @@ import StarrySky from '@/components/elements/StarrySky.vue'
   <AppHeader />
 
   <!-- Main page content. -->
-  <RouterView />
+  <main
+    role="main"
+    class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
+  >
+    <RouterView />
+  </main>
 </template>
 
 <style>
