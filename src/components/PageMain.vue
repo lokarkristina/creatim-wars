@@ -6,6 +6,7 @@ import { storeToRefs } from 'pinia'
 import { useCharacterStore } from '@/stores/characters'
 // components
 import AppButton from '@/components/elements/AppButton.vue'
+import AppLoader from './elements/AppLoader.vue'
 import ModalEdit from './elements/ModalEdit.vue'
 // utils
 import { getCharacterDetails, capitalizeFirst } from '@/utils/dataCleanup'
@@ -51,14 +52,9 @@ watchEffect(async () => {
     class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
   >
     <!-- Skeleton loading, while data is coming in. -->
-    <div
-      v-if="loading"
-      role="status"
-      aria-busy="true"
-      class="loading-indicator"
-    >
+    <div v-if="loading" role="status" aria-busy="true">
       <span class="sr-only">Loading characters...</span>
-      Loading...
+      <AppLoader />
     </div>
 
     <!-- Modal containing the character edit form. -->
