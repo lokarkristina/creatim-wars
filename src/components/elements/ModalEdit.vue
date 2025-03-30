@@ -63,23 +63,25 @@ watchEffect(() => {
 
 <template>
   <div
-    class="fixed inset-0 z-50 modal modal-edit"
+    class="fixed inset-0 z-50 grid modal modal-edit"
     role="dialog"
     aria-labelledby="modal-title"
     aria-modal="true"
   >
     <div
-      class="fixed inset-0 modal-backdrop bg-black/50"
+      class="fixed inset-0 modal-backdrop bg-black/30"
       @click="closeEdit"
       aria-hidden="true"
     ></div>
 
     <div
-      class="relative p-10 bg-black modal-container rounder-xl"
+      class="relative inline-block m-auto p-10 bg-black modal-container rounded-xl w-full max-w-[70vw] shadow-lg shadow-accent/10"
       v-if="character"
     >
-      <div class="modal-header">
-        <h2 id="modal-title" class="text-4xl">
+      <div
+        class="modal-header py-2.5 border-b border-b-white/20 flex items-center justify-between mb-6"
+      >
+        <h2 id="modal-title" class="uppercase">
           {{ `Edit ${character.name}` }}
         </h2>
         <button @click="closeEdit" aria-label="Close modal" type="button">
@@ -88,9 +90,13 @@ watchEffect(() => {
       </div>
 
       <div class="modal-content">
-        <form @submit.prevent="handleSubmit">
+        <!-- @todo add form validation. -->
+        <form
+          @submit.prevent="handleSubmit"
+          class="grid grid-cols-2 gap-x-10 gap-y-4"
+        >
           <div class="form-group">
-            <label for="name" id="name-label">Name:</label>
+            <label for="name" id="name-label">Name</label>
             <input
               id="name"
               v-model="updatedCharacter.name"
@@ -102,7 +108,7 @@ watchEffect(() => {
           </div>
 
           <div class="form-group">
-            <label for="height" id="height-label">Height:</label>
+            <label for="height" id="height-label">Height</label>
             <input
               id="height"
               v-model="updatedCharacter.height"
@@ -113,7 +119,7 @@ watchEffect(() => {
           </div>
 
           <div class="form-group">
-            <label for="mass" id="mass-label">Mass:</label>
+            <label for="mass" id="mass-label">Mass</label>
             <input
               id="mass"
               v-model="updatedCharacter.mass"
@@ -124,7 +130,7 @@ watchEffect(() => {
           </div>
 
           <div class="form-group">
-            <label for="hairColor" id="hair-label">Hair color:</label>
+            <label for="hairColor" id="hair-label">Hair color</label>
             <input
               id="hairColor"
               v-model="updatedCharacter.hairColor"
@@ -135,7 +141,7 @@ watchEffect(() => {
           </div>
 
           <div class="form-group">
-            <label for="skinColor" id="skin-label">Skin color:</label>
+            <label for="skinColor" id="skin-label">Skin color</label>
             <input
               id="skinColor"
               v-model="updatedCharacter.skinColor"
@@ -157,7 +163,7 @@ watchEffect(() => {
           </div>
 
           <div class="form-group">
-            <label for="born" id="born-label">Born:</label>
+            <label for="born" id="born-label">Born</label>
             <input
               id="born"
               v-model="updatedCharacter.born"
@@ -168,7 +174,7 @@ watchEffect(() => {
           </div>
 
           <div class="form-group">
-            <label for="gender" id="gender-label">Gender:</label>
+            <label for="gender" id="gender-label">Gender</label>
             <input
               id="gender"
               v-model="updatedCharacter.gender"
@@ -181,7 +187,11 @@ watchEffect(() => {
           <!-- Add hidden field to update the last edited time. -->
           <input type="hidden" v-model="updatedCharacter.edited" />
 
-          <div class="button-group" role="group" aria-label="Form controls">
+          <div
+            class="grid justify-end grid-flow-col col-span-2 gap-3 mt-6 button-group"
+            role="group"
+            aria-label="Form controls"
+          >
             <!-- cancel changes - Cancel -->
             <AppButton
               ariaLabel="Discard changes"

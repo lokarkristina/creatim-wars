@@ -9,8 +9,8 @@
   --color-black: #000000;
   --color-white: #ffffff;
   --color-yellow: oklch(85.96% 0.177 104.97);
-  --color-red: oklch(61.25% 0.155 38.45);
-  --color-green: oklch(46.65% 0.078 148.94);
+  --color-red: oklch(52.19% 0.199 27.16);
+  --color-green: oklch(55.76% 0.158 162.73);
 
   /* fonts */
   --font-sans: 'Droid Sans', 'sans-serif';
@@ -27,6 +27,7 @@
   --duration-regular: 0.5s;
   --duration-slow: 0.8s;
 }
+
 @theme inline {
   /* semantic color variables for this project */
   --color-background: var(--color-black);
@@ -36,6 +37,48 @@
   --color-accent-60: oklch(from var(--color-accent) l c h / 0.6);
   --color-error: var(--color-red);
   --color-success: var(--color-green);
+}
+
+@layer base {
+  h2 {
+    font-size: var(--text-4xl);
+  }
+}
+
+@layer components {
+  .form-group {
+    display: grid;
+    gap: var(--spacing) / 2;
+  }
+
+  label {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: lighter;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+  }
+
+  input {
+    border-bottom: 1px solid var(--color-white);
+    padding-block: var(--spacing);
+    padding-inline: calc(var(--spacing) * 2);
+    transition: border-color var(--duration-fast) var(--easing-default);
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-accent);
+      outline: none;
+    }
+  }
+}
+
+@utility neon-link {
+  &:hover {
+    box-shadow: 0 0 18px var(--color-white);
+    border-radius: var(--radius-lg);
+    transition: var(--duration-fast) var(--easing-default);
+  }
 }
 
 body {

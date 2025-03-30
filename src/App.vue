@@ -38,8 +38,4 @@ body:has(.side-panel--open) {
     opacity: 0;
   }
 }
-
-.header a {
-  font-weight: bold;
-}
 </style>
