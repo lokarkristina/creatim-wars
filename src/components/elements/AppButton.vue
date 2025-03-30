@@ -21,7 +21,7 @@ const { disabled, ariaLabel, modifier, variant } = defineProps<{
   </button>
 </template>
 
-<style scoped>
+<style>
 .button {
   --_bg: var(--color-accent);
   --_color: var(--color-black);
