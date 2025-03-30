@@ -124,13 +124,14 @@ watchEffect(async () => {
 </template>
 
 <style scoped>
+/* @todo can be cleaned up more probably */
 .holographic-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -10vw;
+  left: -20vw;
+  width: 280%;
+  height: 150%;
   background: linear-gradient(
     0deg,
     transparent,
