@@ -9,6 +9,8 @@
   --color-black: #000000;
   --color-white: #ffffff;
   --color-yellow: oklch(85.96% 0.177 104.97);
+  --color-red: oklch(61.25% 0.155 38.45);
+  --color-green: oklch(46.65% 0.078 148.94);
 
   /* fonts */
   --font-sans: 'Droid Sans', 'sans-serif';
@@ -19,13 +21,21 @@
 
   /* easing */
   --easing-default: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+  /* durations */
+  --duration-fast: 0.3s;
+  --duration-regular: 0.5s;
+  --duration-slow: 0.8s;
 }
 @theme inline {
   /* semantic color variables for this project */
   --color-background: var(--color-black);
   --color-text: var(--color-white);
   --color-accent: var(--color-yellow);
+  --color-accent-30: oklch(from var(--color-accent) l c h / 0.3);
   --color-accent-60: oklch(from var(--color-accent) l c h / 0.6);
+  --color-error: var(--color-red);
+  --color-success: var(--color-green);
 }
 
 body {

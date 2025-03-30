@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useCharacterStore } from '@/stores/characters'
 // components
+import AppButton from '@/components/elements/AppButton.vue'
 import ModalEdit from './elements/ModalEdit.vue'
 // utils
 import { getCharacterDetails, capitalizeFirst } from '@/utils/dataCleanup'
@@ -64,7 +65,7 @@ watchEffect(async () => {
       aria-label="Star Wars Characters"
     >
       <article
-        class="relative grid group grid-rows-[1fr_auto] [&>*]:col-1 character overflow-hidden isolate rounded-xl holographic-card transition"
+        class="relative grid group grid-rows-[1fr_auto] [&>*]:col-1 character overflow-hidden isolate rounded-xl transition"
         v-for="char in characters"
         :key="char.id"
         role="listitem"
@@ -77,7 +78,7 @@ watchEffect(async () => {
           <img
             :src="char.image"
             :alt="`Portrait of ${char.name}`"
-            class="size-full"
+            class="relative size-full"
           />
         </div>
 
@@ -92,26 +93,35 @@ watchEffect(async () => {
               v-for="(value, key) in getCharacterDetails(char)"
               :key="key"
             >
-              <li v-if="value && !['id', 'edited'].includes(key)">
+              <li
+                v-if="value && !['id', 'edited'].includes(key)"
+                :class="{ 'col-span-2': key === 'name' }"
+              >
                 <p :aria-label="capitalizeFirst(key)">
                   <span
-                    class="block text-[10px] font-light tracking-wider uppercase mb-1"
+                    class="block text-[10px] font-light tracking-wider uppercase mb-0.5"
                   >
                     {{ capitalizeFirst(key) + ' &mdash;' }}
                   </span>
-                  <strong class="text-base/1">{{ value }}</strong>
+                  <strong
+                    class="text-base/1"
+                    :class="{ 'text-xl uppercase': key === 'name' }"
+                  >
+                    {{ value }}
+                  </strong>
                 </p>
               </li>
             </template>
           </ul>
 
-          <button
+          <!-- Edit - opens modal to edit characters' data. -->
+          <AppButton
+            class="justify-self-center group-hover:delay-150 translate-y-[200%] opacity-0 group-hover:opacity-100 group-hover:translate-0 transition"
+            :ariaLabel="`Edit ${char.name}'s information`"
             @click="openEditModal(char.id)"
-            class="button button--primary ms-auto group-hover:delay-150 translate-y-[200%] opacity-0 group-hover:opacity-100 group-hover:translate-0 transition"
-            :aria-label="`Edit ${char.name}'s information`"
           >
             Edit
-          </button>
+          </AppButton>
         </div>
       </article>
     </div>
@@ -124,32 +134,23 @@ watchEffect(async () => {
 </template>
 
 <style scoped>
-/* @todo can be cleaned up more probably */
-.holographic-card::before {
-  content: '';
-  position: absolute;
-  top: -10vw;
-  left: -20vw;
-  width: 280%;
-  height: 150%;
-  background: linear-gradient(
-    0deg,
-    transparent,
-    transparent 30%,
-    var(--color-accent-60)
-  );
-  transform: rotate(-45deg);
-  transition: all 0.7s var(--easing-default);
-  opacity: 0;
+img {
+  mask: linear-gradient(
+      135deg,
+      var(--color-black) 40%,
+      rgba(0, 0, 0, 0.5),
+      var(--color-black) 60%
+    )
+    100% 100%/250% 250%;
+  transition: var(--duration-slow);
 }
 
-.holographic-card:hover {
+article:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 20px var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
 
-  &::before {
-    opacity: 1;
-    transform: rotate(-45deg) translateY(100%);
+  img {
+    mask-position: 0 0;
   }
 }
 </style>

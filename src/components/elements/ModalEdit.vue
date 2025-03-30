@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed, watchEffect, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+// components
+import AppButton from '@/components/elements/AppButton.vue'
+// store
 import { useCharacterStore } from '@/stores/characters'
+// types
 import type { Character } from '@/types/Character'
 
 const route = useRoute()
@@ -70,9 +74,14 @@ watchEffect(() => {
       aria-hidden="true"
     ></div>
 
-    <div class="relative modal-container" v-if="character">
+    <div
+      class="relative p-10 bg-black modal-container rounder-xl"
+      v-if="character"
+    >
       <div class="modal-header">
-        <h2 id="modal-title">{{ `Edit ${character.name}` }}</h2>
+        <h2 id="modal-title" class="text-4xl">
+          {{ `Edit ${character.name}` }}
+        </h2>
         <button @click="closeEdit" aria-label="Close modal" type="button">
           Close
         </button>
@@ -169,23 +178,28 @@ watchEffect(() => {
             />
           </div>
 
+          <!-- Add hidden field to update the last edited time. -->
           <input type="hidden" v-model="updatedCharacter.edited" />
 
           <div class="button-group" role="group" aria-label="Form controls">
-            <button
-              type="button"
+            <!-- cancel changes - Cancel -->
+            <AppButton
+              ariaLabel="Discard changes"
+              modifier="error"
               @click="closeEdit"
-              aria-label="Cancel editing"
             >
               Cancel
-            </button>
-            <button
+            </AppButton>
+
+            <!-- submit button - Save -->
+            <AppButton
               type="submit"
+              ariaLabel="Save changes"
+              modifier="success"
               :disabled="!dataChanged"
-              aria-label="Save changes"
             >
               Save
-            </button>
+            </AppButton>
           </div>
         </form>
       </div>
