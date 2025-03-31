@@ -1,39 +1,45 @@
-# star-wars
+# ✨ Star Wars ✨ - characters list & edit
 
-This template should help get you started developing with Vue 3 in Vite.
+### Live page: [creatim-wars.netlify.app](https://creatim-wars.netlify.app/) 🌟.
 
-## Recommended IDE Setup
+Get a list of characters from an API and display them on a page.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Type Support for `.vue` Imports in TS
+### API used: [StarWars API](https://github.com/akabab/starwars-api).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+I chose this API, because it included images. I'm not a fan of referenced images, but given that this was the best choice I found, I think they work for now.
 
-## Customize configuration
+I must acknowledge, **I changed the design** a bit - I believe the information is a bit more clearer to see now. I took the design that was provided as an inspiration and did not follow it 100%. I know this is not always encouraged, so I wanted to note this here. I absolutely will follow a design if that's a requirement.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Technologies
 
-## Project Setup
+### Vue.js
 
-```sh
-yarn
-```
+I decided to build the project as a vue app. 
 
-### Compile and Hot-Reload for Development
+I used [🍍 Pinia](https://pinia.vuejs.org/) for storing the data and [vue router](https://router.vuejs.org/) to handle potential other/sub-pages to come. I added a 404 just to make the links point to a page - even if this is a 404 page.
 
-```sh
-yarn dev
-```
+The app is written with [TypeScript](https://www.typescriptlang.org/).
 
-### Type-Check, Compile and Minify for Production
+### TailwindCSS
 
-```sh
-yarn build
-```
+For styling I used a help of [Tailwind CSS](https://tailwindcss.com/). I do not have a lot of experiences working with it yet, so I wanted to take an opportunity to learn how to work with it more. So far, I've only worked with writing my custom CSS (with SCSS), but seeing what the trends are, I wanted to give it a try.
 
-### Lint with [ESLint](https://eslint.org/)
+### Icons
 
-```sh
-yarn lint
-```
+For icons I used [Iconify](https://iconify.design/docs/icon-components/vue/). There aren't many used, but the ones that are felt needed. I'd love to try and create custom icons some time in the future.
+
+## Live page
+
+The code is deployed to [creatim-wars.netlify.app](https://creatim-wars.netlify.app/), and can be viewed and tested.
+
+
+### Project Setup
+
+- built with `yarn`.
+- compile and hot-reload for development: `yarn dev`
+- type check, compile and minify for production `yarn build`
+- lint with [ESLint](https://eslint.org/) `yarn lint`
+
+For more information I am available at [email](mailto:lokarkristina79@gmail.com) & [linkedIn](https://www.linkedin.com/in/lokarkristina/).
