@@ -76,7 +76,6 @@ watchEffect(async () => {
           v-if="char.image"
           class="character-image after:absolute after:inset-0 after:bg-linear-to-t after:from-black after:to-black/0 max-h-[300px] md:max-h-[580px] row-[1/-1] bg-accent overflow-hidden"
         >
-          <!-- @todo add some hover to image also. -->
           <img
             :src="char.image"
             :alt="`Portrait of ${char.name}`"

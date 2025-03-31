@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // @todo there's a bit of repetition with header component, make DRY!
-
+import { Icon } from '@iconify/vue'
 // composables
 import { useSidePanel } from '@/composables/useSidePanel'
 
@@ -21,14 +21,16 @@ const { isOpen, closePanel } = useSidePanel()
         <img src="@/assets/logo.png" class="logo" alt="Star Wars logo" />
       </RouterLink>
 
-      <button class="icon" @click="closePanel">Icon close.</button>
+      <button class="icon" @click="closePanel">
+        <Icon icon="ix:close" />
+      </button>
     </div>
 
     <div class="mt-6 side-panel__body">
       <slot />
     </div>
 
-    <div class="p-5 border-t side-panel__footer border-t-white/20">footer.</div>
+    <!-- @todo <div class="p-5 border-t side-panel__footer border-t-white/20">footer.</div> -->
   </div>
 </template>
 

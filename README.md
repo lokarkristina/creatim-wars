@@ -10,6 +10,8 @@ Get a list of characters from an API and display them on a page.
 
 I chose this API, because it included images. I'm not a fan of referenced images, but given that this was the best choice I found, I think they work for now.
 
+**Some images don't load, so there's error in the console.** I was thinking of maybe finding the images I like and connect them to the IDs of the characters. Maybe *`@todo`* for future. :)
+
 I must acknowledge, **I changed the design** a bit - I believe the information is a bit more clearer to see now. I took the design that was provided as an inspiration and did not follow it 100%. I know this is not always encouraged, so I wanted to note this here. I absolutely will follow a design if that's a requirement.
 
 ## Technologies

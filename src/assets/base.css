@@ -8,6 +8,7 @@
   /* colors */
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-transparent: rgba(0, 0, 0, 0);
   --color-yellow: oklch(85.96% 0.177 104.97);
   --color-red: oklch(52.19% 0.199 27.16);
   --color-green: oklch(55.76% 0.158 162.73);
