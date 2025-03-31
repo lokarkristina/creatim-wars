@@ -2,21 +2,17 @@
 import { RouterView } from 'vue-router'
 // components
 import AppHeader from '@/components/layout/AppHeader.vue'
-import StarrySky from '@/components/elements/StarrySky.vue'
-import AppToaster from './components/elements/AppToaster.vue'
+import AppToaster from '@/components/elements/AppToaster.vue'
 </script>
 
 <template>
-  <!-- Some fancy bg, that's not in design, but I felt like it fits. -->
-  <StarrySky />
-
   <!-- Page header. -->
   <AppHeader />
 
   <!-- Main page content. -->
   <main
     role="main"
-    class="w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
+    class="relative w-[85vw] md:w-[90vw] max-w-(--content-size) mx-auto py-12 md:py-24 lg:py-36"
   >
     <RouterView />
   </main>
@@ -35,7 +31,7 @@ import AppToaster from './components/elements/AppToaster.vue'
       rgba(227, 214, 29, 0.4) 0%,
       rgba(0, 0, 0, 1) 70%
     )
-    no-repeat center top/250% auto fixed;
+    no-repeat center top/100% auto fixed;
 }
 
 body:has(.side-panel--open) {

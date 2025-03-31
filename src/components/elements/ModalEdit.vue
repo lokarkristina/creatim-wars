@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, watchEffect, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { Icon } from '@iconify/vue'
 // components
 import AppButton from '@/components/elements/AppButton.vue'
 // store
@@ -93,13 +94,18 @@ watchEffect(() => {
       v-if="character"
     >
       <div
-        class="modal-header py-2.5 border-b border-b-white/20 flex items-center justify-between mb-6"
+        class="flex items-center justify-between mb-6 border-b modal-header border-b-white/20"
       >
         <h2 id="modal-title" class="uppercase">
           {{ `Edit ${character.name}` }}
         </h2>
-        <button @click="closeEdit" aria-label="Close modal" type="button">
-          Close
+        <button
+          @click="closeEdit"
+          aria-label="Close modal"
+          type="button"
+          class="p-2.5 translate-x-2.5 -translate-y-5"
+        >
+          <Icon icon="ix:close" />
         </button>
       </div>
 

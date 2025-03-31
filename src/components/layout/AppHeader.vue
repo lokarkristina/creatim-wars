@@ -6,6 +6,8 @@ import MenuMain from '@/components/menus/MenuMain.vue'
 import SidePanel from '@/components/layout/SidePanel.vue'
 // composables
 import { useSidePanel } from '@/composables/useSidePanel.ts'
+// icons
+import { Icon } from '@iconify/vue'
 
 const { openPanel } = useSidePanel()
 </script>
@@ -47,16 +49,18 @@ const { openPanel } = useSidePanel()
     <div class="lg:hidden">
       <!-- Mobile menu side panel with trigger link. -->
       <button
-        class="mobile-menu-icon"
+        class="text-3xl transition-opacity opacity-60 mobile-menu-icon rotate-y-180 hover:opacity-100"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="side-panel"
         @click="openPanel"
       >
         <span class="sr-only">Open Menu</span>
+        <Icon icon="ix:app-menu" />
       </button>
 
       <!-- Side panel component with navigation menus. -->
+      <!-- @todo add transitions. -->
       <SidePanel>
         <nav aria-label="Mobile navigation">
           <!-- The main menu links. -->

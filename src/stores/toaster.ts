@@ -19,6 +19,12 @@ const createToast = (text: string, status: ToastStatus): Toast => ({
   id: Math.random() * 1000,
 })
 
+export const toastTypeMap: Record<ToastStatus, string> = {
+  warning: 'warning',
+  error: 'error',
+  success: 'success',
+}
+
 export default defineStore('toaster', {
   state: (): { toasts: Toast[] } => ({
     toasts: [],

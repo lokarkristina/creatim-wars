@@ -1,49 +1,38 @@
 <script setup lang="ts">
-import useToasterStore, { type ToastStatus } from '@/stores/toaster'
+import useToasterStore, { toastTypeMap } from '@/stores/toaster'
+import { Icon } from '@iconify/vue'
 
 const toastStore = useToasterStore()
-
-const toastClassMap: Record<ToastStatus, string> = {
-  warning: 'warning',
-  error: 'error',
-  success: 'success',
-}
-
-const toastIconMap: Record<ToastStatus, string> = {
-  error: 'toast-error',
-  warning: 'toast-warning',
-  success: 'toast-success',
-}
 </script>
 
 <template>
-  <ul
-    v-if="toastStore.toasts.length"
+  <TransitionGroup
+    tag="ul"
+    name="toast"
     class="fixed z-50 grid gap-2 toaster__wrapper end-4 bottom-4"
   >
     <li
       v-for="toast in toastStore.toasts"
-      :class="['toaster__inner', toastClassMap[toast.status]]"
-      class="flex items-center gap-4 px-6 py-3 border border-transparent rounded-md"
-      :key="toast.text"
+      :key="toast.id"
+      :class="['toaster__inner', toastTypeMap[toast.status]]"
+      class="flex items-center gap-4 px-4 py-2 border border-transparent rounded-md"
     >
       <Icon
-        :name="toastIconMap[toast.status]"
+        :icon="`ix:${toastTypeMap[toast.status]}`"
         class="toaster__list-icon aspect-square w-7"
       />
-      <span class="text-sm font-bold toaster__inner-text">
-        {{ toast.text }}
-      </span>
-
-      <!-- Dismiss toast. -->
+      <span class="text-sm font-bold toaster__inner-text">{{
+        toast.text
+      }}</span>
       <button
         class="p-1 transition-opacity translate-x-1 opacity-50 ms-auto hover:opacity-100"
         @click="toastStore.dismiss(toast.id)"
+        aria-label="Dismiss notification"
       >
-        x
+        <Icon icon="ix:close-small" />
       </button>
     </li>
-  </ul>
+  </TransitionGroup>
 </template>
 
 <style scoped>
@@ -74,5 +63,21 @@ const toastIconMap: Record<ToastStatus, string> = {
 
 .toaster__inner-text {
   color: var(--_color);
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  transition: var(--duration-slow) var(--easing-default);
+  transition-property: opacity, transform;
+}
+
+.toast-enter-from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>
