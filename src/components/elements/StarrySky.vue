@@ -127,7 +127,7 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  background: #000;
+  background: var(--color-black);
   z-index: -1000;
 
   > div {
@@ -153,18 +153,18 @@ onUnmounted(() => {
 }
 
 .top-left {
-  background-image: url('../assets/images/topleft.png');
+  background-image: url('@/assets/images/topleft.png');
 }
 
 .top-right {
-  background-image: url('../assets/images/topright.png');
+  background-image: url('@/assets/images/topright.png');
 }
 
 .bottom-left {
-  background-image: url('../assets/images/bottomleft.png');
+  background-image: url('@/assets/images/bottomleft.png');
 }
 
 .bottom-right {
-  background-image: url('../assets/images/bottomright.png');
+  background-image: url('@/assets/images/bottomright.png');
 }
 </style>
