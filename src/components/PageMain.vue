@@ -6,8 +6,8 @@ import { storeToRefs } from 'pinia'
 import { useCharacterStore } from '@/stores/characters'
 // components
 import AppButton from '@/components/elements/AppButton.vue'
-import AppLoader from './elements/AppLoader.vue'
-import ModalEdit from './elements/ModalEdit.vue'
+import AppLoader from '@/components/elements/AppLoader.vue'
+import ModalEdit from '@/components/elements/ModalEdit.vue'
 // utils
 import { getCharacterDetails, capitalizeFirst } from '@/utils/dataCleanup'
 
@@ -48,7 +48,7 @@ watchEffect(async () => {
 
 <template>
   <div>
-    <!-- Skeleton loading, while data is coming in. -->
+    <!-- Loading, while data is coming in. -->
     <div v-if="loading" role="status" aria-busy="true">
       <span class="sr-only">Loading characters...</span>
       <AppLoader />
@@ -80,7 +80,7 @@ watchEffect(async () => {
           <img
             :src="char.image"
             :alt="`Portrait of ${char.name}`"
-            class="relative size-full"
+            class="relative group-hover:scale-105 size-full"
             :aria-describedby="`char-details-${char.id}`"
           />
         </div>

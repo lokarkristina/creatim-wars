@@ -11,6 +11,7 @@
   --color-yellow: oklch(85.96% 0.177 104.97);
   --color-red: oklch(52.19% 0.199 27.16);
   --color-green: oklch(55.76% 0.158 162.73);
+  --color-orange: oklch(71% 0.173 57.7);
 
   /* fonts */
   --font-sans: 'Droid Sans', 'sans-serif';
@@ -37,6 +38,7 @@
   --color-accent-60: oklch(from var(--color-accent) l c h / 0.6);
   --color-error: var(--color-red);
   --color-success: var(--color-green);
+  --color-warning: var(--color-orange);
 }
 
 @layer base {

@@ -3,6 +3,7 @@ import { RouterView } from 'vue-router'
 // components
 import AppHeader from '@/components/layout/AppHeader.vue'
 import StarrySky from '@/components/elements/StarrySky.vue'
+import AppToaster from './components/elements/AppToaster.vue'
 </script>
 
 <template>
@@ -19,6 +20,9 @@ import StarrySky from '@/components/elements/StarrySky.vue'
   >
     <RouterView />
   </main>
+
+  <!-- Toaster notifications. -->
+  <AppToaster />
 </template>
 
 <style>

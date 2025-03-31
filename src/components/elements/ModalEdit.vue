@@ -5,14 +5,19 @@ import { useRoute, useRouter } from 'vue-router'
 import AppButton from '@/components/elements/AppButton.vue'
 // store
 import { useCharacterStore } from '@/stores/characters'
+import useToasterStore from '@/stores/toaster'
 // types
 import type { Character } from '@/types/Character'
 
+// Route.
 const route = useRoute()
 const router = useRouter()
 
-const { getCharacterById, editCharacter } = useCharacterStore()
+// Toasts.
+const toasterStore = useToasterStore()
 
+// Characters.
+const { getCharacterById, editCharacter } = useCharacterStore()
 const character = ref<Character | null>(null)
 const updatedCharacter = ref<Character>({} as Character)
 
@@ -35,7 +40,15 @@ const dataChanged = computed(() => {
 
 // Function to close the edit modal by clearing the query parameters.
 const closeEdit = () => {
+  // Clear query parameters to close the modal.
   router.push({ query: {} })
+
+  // Show appropriate toast message based on whether data was changed.
+  if (dataChanged.value) {
+    toasterStore.success({ text: 'Changes saved successfully!' })
+  } else {
+    toasterStore.warning({ text: 'Changes discarded.' })
+  }
 }
 
 // Handle form submission,
@@ -43,6 +56,7 @@ const closeEdit = () => {
 const handleSubmit = () => {
   if (character.value) {
     editCharacter(character.value.id, updatedCharacter.value)
+    // Close modal once data updated.
     closeEdit()
   }
 }
