@@ -45,3 +45,11 @@ The code is deployed to [creatim-wars.netlify.app](https://creatim-wars.netlify.
 - lint with [ESLint](https://eslint.org/) `yarn lint`
 
 For more information I am available at [email](mailto:lokarkristina79@gmail.com) & [linkedIn](https://www.linkedin.com/in/lokarkristina/).
+
+
+<!----
+        __
+    .__( .)< 
+    \____)
+~~~~~~~~~~~~~~~~~
+---->
